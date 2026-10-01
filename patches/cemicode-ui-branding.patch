@@ -4,6 +4,9 @@
 # Alcance: TUI logo, CLI wordmark, web title/favicons/theme-color, web describe,
 # user-agent del binario, nombre de artefacto cemicode-*. Assets web se copian
 # desde cemicode-branding/ a packages/app/public/ en CI (ver workflow build-cemicode.yml).
+# NOTA: el artefacto conserva el nombre upstream (opencode-*) porque
+# `target: name.replace(pkg.name,"bun")` lo exige; el renombre a cemicode
+# ocurre al empaquetar copiando el binario a bin/cemicode.
 # Desktop (electron-builder app id, menus i18n): FASE 2, fuera de este parche.
 
 --- a/packages/tui/src/logo.ts
@@ -60,7 +63,3 @@
 @@
 -      execArgv: [`--user-agent=opencode/${Script.version}`, "--use-system-ca", "--"],
 +      execArgv: [`--user-agent=cemicode/${Script.version}`, "--use-system-ca", "--"],
-@@
-   const name = [
--    pkg.name,
-+    "cemicode", // CEMICODE rebrand (upstream: pkg.name)

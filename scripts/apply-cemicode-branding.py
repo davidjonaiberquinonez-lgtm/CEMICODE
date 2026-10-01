@@ -53,15 +53,14 @@ REPLACEMENTS = [
     ("packages/opencode/src/cli/cmd/web.ts",
      'describe: "start opencode server and open web interface",',
      'describe: "start cemicode server and open web interface", // CEMICODE rebrand'),
-    # 5a. User-agent del binario compilado (packages/opencode/script/build.ts)
-    # NOTA: sin comentario inline — va dentro del array execArgv y lo romperia
+    # 5. User-agent del binario compilado (packages/opencode/script/build.ts)
+    # NOTA: NO se renombra el artefacto aqui: `target: name.replace(pkg.name,"bun")`
+    # exige que el nombre contenga "opencode". El renombre a cemicode lo hace
+    # el workflow / empaquetado al copiar el binario. Solo cambia el user-agent.
+    # (sin comentario inline: va dentro del array execArgv y lo romperia)
     ("packages/opencode/script/build.ts",
      "`--user-agent=opencode/${Script.version}`",
      "`--user-agent=cemicode/${Script.version}`"),
-    # 5b. Nombre del binario compilado -> cemicode-*
-    ("packages/opencode/script/build.ts",
-     "  const name = [\n    pkg.name,",
-     '  const name = [\n    "cemicode", // CEMICODE rebrand (upstream: pkg.name)'),
 ]
 
 WEB_ASSETS = [

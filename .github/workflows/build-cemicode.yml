@@ -42,7 +42,7 @@ jobs:
       - name: Empaquetar portable rebrandeado
         run: |
           ls opencode-upstream/packages/opencode/dist/
-          BIN=$(ls -d opencode-upstream/packages/opencode/dist/cemicode-* | head -n1)/bin/opencode
+          BIN=$(ls -d opencode-upstream/packages/opencode/dist/opencode-* | head -n1)/bin/opencode
           mkdir -p dist-portable-cemicode/bin dist
           cp "$BIN" dist-portable-cemicode/bin/cemicode
           chmod +x dist-portable-cemicode/bin/cemicode

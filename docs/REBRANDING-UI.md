@@ -12,7 +12,7 @@ sí aplica; el logo/título compilados no. Este documento cubre el cambio real.
 | `packages/opencode/src/cli/ui.ts` | Wordmark no-TTY → `CEMICODE / CODING AGENT · GDX SPARK DGX` |
 | `packages/app/index.html` | `<title>CEMICODE — Coding Agent</title>`, favicon → `/cemicode-logo.svg`, `theme-color` + fondo → `#0B1220` |
 | `packages/opencode/src/cli/cmd/web.ts` | describe → `start cemicode server and open web interface` |
-| `packages/opencode/script/build.ts` | user-agent → `cemicode/<versión>`, artefacto → `cemicode-*` |
+| `packages/opencode/script/build.ts` | user-agent → `cemicode/<versión>` (el artefacto conserva nombre upstream: el renombre a `cemicode` ocurre al empaquetar) |
 | `packages/app/public/` (CI) | Se copian `cemicode-logo.svg` + `cemicode-logo-horizontal.svg` (icono izq + texto der) para la Web UI embebida |
 
 Regla AGENTS.md respetada: `opencode-upstream/` no se edita a mano; solo via
