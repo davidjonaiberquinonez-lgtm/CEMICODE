@@ -1,0 +1,63 @@
+name: build-cemicode
+
+# Repo liviano: solo capa CEMICODE. Upstream se clona fresco en CI.
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "patches/cemicode-ui-branding.patch"
+      - "scripts/apply-cemicode-branding.py"
+      - "cemicode-branding/**"
+      - "opencode.json"
+      - ".opencode/**"
+      - ".github/workflows/build-cemicode.yml"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Clonar upstream (MIT, anomalyco/opencode, depth 1)
+        run: git clone --depth 1 https://github.com/anomalyco/opencode.git opencode-upstream
+
+      - name: Setup bun 1.3.14
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+
+      - name: Aplicar branding CEMICODE (parche documentado)
+        run: |
+          python3 scripts/apply-cemicode-branding.py
+          python3 scripts/apply-cemicode-branding.py --check
+
+      - name: Instalar dependencias upstream
+        working-directory: opencode-upstream
+        run: bun install
+
+      - name: Compilar binario cemicode (single, con Web UI embebida)
+        working-directory: opencode-upstream/packages/opencode
+        run: bun run script/build.ts --single
+
+      - name: Empaquetar portable rebrandeado
+        run: |
+          ls opencode-upstream/packages/opencode/dist/
+          BIN=$(ls -d opencode-upstream/packages/opencode/dist/cemicode-* | head -n1)/bin/opencode
+          mkdir -p dist-portable-cemicode/bin dist
+          cp "$BIN" dist-portable-cemicode/bin/cemicode
+          chmod +x dist-portable-cemicode/bin/cemicode
+          cp opencode.json .env.example README_CEMICODE.md AGENTS.md dist-portable-cemicode/
+          mkdir -p dist-portable-cemicode/.opencode dist-portable-cemicode/scripts
+          cp -r .opencode/agents dist-portable-cemicode/.opencode/
+          cp -r .opencode/themes dist-portable-cemicode/.opencode/ 2>/dev/null || true
+          cp .opencode/tui.json dist-portable-cemicode/.opencode/
+          cp -r cemicode-branding dist-portable-cemicode/
+          cp scripts/cemicode-auth.py scripts/cemicode-chat.py dist-portable-cemicode/scripts/
+          (cd dist-portable-cemicode && zip -r ../dist/CEMICODE-Portable-rebranded.zip .)
+          ./dist-portable-cemicode/bin/cemicode --version
+
+      - name: Subir artefactos
+        uses: actions/upload-artifact@v4
+        with:
+          name: cemicode-portable-rebranded
+          path: dist/CEMICODE-Portable-rebranded.zip
