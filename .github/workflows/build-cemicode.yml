@@ -39,6 +39,7 @@ jobs:
         working-directory: opencode-upstream/packages/opencode
         env:
           OPENCODE_CHANNEL: prod
+          OPENCODE_VERSION: 1.18.34
         run: bun run script/build.ts
 
       - name: Empaquetar portables rebrandeados (linux + windows)
