@@ -35,29 +35,40 @@ jobs:
         working-directory: opencode-upstream
         run: bun install
 
-      - name: Compilar binario cemicode (single, con Web UI embebida)
+      - name: Compilar binarios cemicode (matriz completa, con Web UI embebida)
         working-directory: opencode-upstream/packages/opencode
-        run: bun run script/build.ts --single
+        run: bun run script/build.ts
 
-      - name: Empaquetar portable rebrandeado
+      - name: Empaquetar portables rebrandeados (linux + windows)
         run: |
           ls opencode-upstream/packages/opencode/dist/
-          BIN=$(ls -d opencode-upstream/packages/opencode/dist/opencode-* | head -n1)/bin/opencode
-          mkdir -p dist-portable-cemicode/bin dist
-          cp "$BIN" dist-portable-cemicode/bin/cemicode
-          chmod +x dist-portable-cemicode/bin/cemicode
-          cp opencode.json .env.example README_CEMICODE.md AGENTS.md dist-portable-cemicode/
-          mkdir -p dist-portable-cemicode/.opencode dist-portable-cemicode/scripts
-          cp -r .opencode/agents dist-portable-cemicode/.opencode/
-          cp -r .opencode/themes dist-portable-cemicode/.opencode/ 2>/dev/null || true
-          cp .opencode/tui.json dist-portable-cemicode/.opencode/
-          cp -r cemicode-branding dist-portable-cemicode/
-          cp scripts/cemicode-auth.py scripts/cemicode-chat.py dist-portable-cemicode/scripts/
-          (cd dist-portable-cemicode && zip -r ../dist/CEMICODE-Portable-rebranded.zip .)
-          ./dist-portable-cemicode/bin/cemicode --version
+          mkdir -p dist
+          for TARGET in linux-x64 windows-x64; do
+            D="opencode-upstream/packages/opencode/dist/opencode-${TARGET}/bin"
+            ls "$D"
+            if [ "$TARGET" = "windows-x64" ]; then
+              SRC="$D/opencode.exe"; [ -f "$SRC" ] || SRC="$D/opencode"
+              EXE=".exe"
+            else
+              SRC="$D/opencode"; EXE=""
+            fi
+            [ -f "$SRC" ] || { echo "FALTA binario en $D"; exit 1; }
+            P="dist-portable-${TARGET}"
+            rm -rf "$P"; mkdir -p "$P/bin" "$P/.opencode" "$P/scripts"
+            cp "$SRC" "$P/bin/cemicode${EXE}"
+            cp opencode.json .env.example README_CEMICODE.md AGENTS.md "$P/"
+            cp -r .opencode/agents "$P/.opencode/"
+            cp -r .opencode/themes "$P/.opencode/" 2>/dev/null || true
+            cp .opencode/tui.json "$P/.opencode/"
+            cp -r cemicode-branding "$P/"
+            cp scripts/cemicode-auth.py scripts/cemicode-chat.py "$P/scripts/"
+            cp ejecutar-cemicode.bat ejecutar-cemicode-web.bat "$P/" 2>/dev/null || true
+            (cd "$P" && zip -r "../dist/CEMICODE-Portable-${TARGET}-rebranded.zip" .)
+          done
+          ./dist-portable-linux-x64/bin/cemicode --version
 
       - name: Subir artefactos
         uses: actions/upload-artifact@v4
         with:
-          name: cemicode-portable-rebranded
-          path: dist/CEMICODE-Portable-rebranded.zip
+          name: cemicode-portables-rebranded
+          path: dist/CEMICODE-Portable-*-rebranded.zip
