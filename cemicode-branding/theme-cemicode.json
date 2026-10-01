@@ -1,0 +1,21 @@
+{
+  "name": "CEMICODE Tech Azul Oscuro",
+  "brand": "CEMICODE",
+  "colors": {
+    "bg": "#0B1220",
+    "surface": "#111C33",
+    "primary": "#2563EB",
+    "accent": "#0EA5E9",
+    "success": "#10B981",
+    "warning": "#F59E0B",
+    "text": "#E6EDF7",
+    "muted": "#8CA0BF"
+  },
+  "apply": {
+    "tui": "opencode-upstream/packages/tui — importar paleta en theme assets (ver README)",
+    "web": "opencode-upstream/packages/app — Tailwind: extender theme con primary #2563EB",
+    "logo": "cemicode-branding/logo-cemicode.svg",
+    "logo_horizontal": "cemicode-branding/logo-cemicode-horizontal.svg",
+    "layout": "icono izquierda + logotipo derecha (CEMICODE CODING AGENT)"
+  }
+}

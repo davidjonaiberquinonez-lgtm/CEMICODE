@@ -1,0 +1,15 @@
+.env
+.cemicode/
+probe_dgx.py
+__pycache__/
+opencode-upstream/node_modules/
+node_modules/
+dist/
+build/
+*.log
+dist-portable-cemicode/
+*.spec
+# Upstream se clona fresco en CI (ver workflow build-cemicode); no se versiona
+opencode-upstream/
+.cime/
+token.json

@@ -1,0 +1,66 @@
+# Parche documentado CEMICODE UI branding (MIT upstream intacta)
+# Se aplica con: python scripts/apply-cemicode-branding.py
+# NO editar opencode-upstream/ a mano — este archivo es la unica fuente de cambios UI.
+# Alcance: TUI logo, CLI wordmark, web title/favicons/theme-color, web describe,
+# user-agent del binario, nombre de artefacto cemicode-*. Assets web se copian
+# desde cemicode-branding/ a packages/app/public/ en CI (ver workflow build-cemicode.yml).
+# Desktop (electron-builder app id, menus i18n): FASE 2, fuera de este parche.
+
+--- a/packages/tui/src/logo.ts
++++ b/packages/tui/src/logo.ts
+@@
+ export const logo = {
+-  left: ["                   ", "█▀▀█ █▀▀█ █▀▀█ █▀▀▄", "█__█ █__█ █^^^ █__█", "▀▀▀▀ █▀▀▀ ▀▀▀▀ ▀~~▀"],
+-  right: ["             ▄     ", "█▀▀▀ █▀▀█ █▀▀█ █▀▀█", "█___ █__█ █__█ █^^^", "▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀"],
++  left: ["                   ", " █▀▀▀▀▀▀▀▀▀▀▀█     ", " █                  ", "  ▀▀▀▀▀▀▀▀▀▀▀▀     "],
++  right: ["  ▄               ", "CEMICODE CODING   ", "AGENT · GDX SPARK ", "DGX · PULIDO OK   "], // CEMICODE rebrand
+ }
+
+--- a/packages/opencode/src/cli/ui.ts
++++ b/packages/opencode/src/cli/ui.ts
+@@
+-const wordmark = [
+-  `⠀                                ▄     `,
+-  `█▀▀█ █▀▀█ █▀▀█ █▀▀▄ █▀▀▀ █▀▀█ █▀▀█ █▀▀█`,
+-  `█  █ █  █ █▀▀▀ █  █ █    █  █ █  █ █▀▀▀`,
+-  `▀▀▀▀ █▀▀▀ ▀▀▀▀ ▀  ▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀`,
+-]
++const wordmark = [
++  `CEMICODE`,
++  `CODING AGENT · GDX SPARK DGX`,
++  `Enjambre multi-agente sobre OpenCode (MIT)`,
++  ``,
++] // CEMICODE rebrand
+
+--- a/packages/app/index.html
++++ b/packages/app/index.html
+@@
+-    <title>OpenCode</title>
+-    <link rel="icon" type="image/png" href="/favicon-96x96-v3.png" sizes="96x96" />
+-    <link rel="icon" type="image/svg+xml" href="/favicon-v3.svg" />
+-    <link rel="shortcut icon" href="/favicon-v3.ico" />
+-    <meta name="theme-color" content="#fafafa" />
++    <title>CEMICODE — Coding Agent</title> <!-- CEMICODE rebrand -->
++    <link rel="icon" type="image/svg+xml" href="/cemicode-logo.svg" />
++    <link rel="icon" type="image/png" href="/favicon-96x96-v3.png" sizes="96x96" />
++    <link rel="shortcut icon" href="/favicon-v3.ico" /> <!-- CEMICODE rebrand -->
++    <meta name="theme-color" content="#0B1220" /> <!-- CEMICODE rebrand -->
+@@
+-<html lang="en" style="background-color: var(--v2-background-bg-deep, #fafafa)">
++<html lang="en" style="background-color: var(--v2-background-bg-deep, #0B1220)"> <!-- CEMICODE rebrand -->
+
+--- a/packages/opencode/src/cli/cmd/web.ts
++++ b/packages/opencode/src/cli/cmd/web.ts
+@@
+-  describe: "start opencode server and open web interface",
++  describe: "start cemicode server and open web interface", // CEMICODE rebrand
+
+--- a/packages/opencode/script/build.ts
++++ b/packages/opencode/script/build.ts
+@@
+-      execArgv: [`--user-agent=opencode/${Script.version}`, "--use-system-ca", "--"],
++      execArgv: [`--user-agent=cemicode/${Script.version}`, "--use-system-ca", "--"], // CEMICODE rebrand
+@@
+   const name = [
+-    pkg.name,
++    "cemicode", // CEMICODE rebrand (upstream: pkg.name)

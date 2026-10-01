@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="240" viewBox="0 0 960 240">
+  <defs>
+    <linearGradient id="cGradH" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7DF9FF"/>
+      <stop offset="0.5" stop-color="#0EA5E9"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#A5F3FC"/>
+      <stop offset="0.55" stop-color="#38BDF8"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="240" rx="24" fill="#0B1220"/>
+  <!-- ICONO IZQUIERDA -->
+  <g transform="translate(30,30)">
+    <rect width="180" height="180" rx="32" fill="none"/>
+    <path d="M135 45 C100 25 55 33 40 68 C25 103 42 145 77 156 C97 163 118 160 135 147 L126 127 C112 135 95 137 81 130 C59 120 51 93 62 74 C73 55 102 49 122 63 Z" fill="none" stroke="url(#cGradH)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M90 75 L68 75 C60 75 55 80 55 92 C55 104 60 109 68 109 L90 109 L90 98 L72 98 L72 95 L86 95 L86 85 L72 85 L72 82 L90 82 Z" fill="url(#cGradH)"/>
+    <text x="40" y="106" font-family="monospace" font-size="36" fill="#8CA0BF">{</text>
+    <path d="M90 75 L126 42" stroke="#0EA5E9" stroke-width="6" stroke-linecap="round"/>
+    <path d="M112 32 L128 40 L118 58 Z" fill="#7DF9FF"/>
+    <circle cx="108" cy="77" r="4" fill="#7DF9FF"/>
+    <g transform="translate(128,97)" fill="none" stroke="#5B8DEF" stroke-width="5.5" stroke-linecap="round">
+      <circle cx="0" cy="0" r="14" fill="#0B1220"/>
+      <circle cx="0" cy="0" r="5" fill="#0EA5E9" stroke="none"/>
+      <path d="M0 -22 L0 -15 M0 15 L0 22 M-22 0 L-15 0 M15 0 L22 0 M-15 -15 L-10 -10 M10 10 L15 15 M15 -15 L10 -10 M-10 10 L-15 15"/>
+    </g>
+    <path d="M40 144 C58 138 84 141 104 132" fill="none" stroke="#2563EB" stroke-width="4.5" stroke-linecap="round"/>
+    <circle cx="107" cy="131" r="5" fill="none" stroke="#0EA5E9" stroke-width="3.5"/>
+  </g>
+  <!-- LOGOTIPO DERECHA -->
+  <g transform="translate(260,0)">
+    <text x="0" y="135" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="96" letter-spacing="2" fill="url(#textGrad)">CEMIC<tspan fill="#0EA5E9">{}</tspan>DE</text>
+    <text x="4" y="180" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="36" letter-spacing="8" fill="#E6EDF7">CODING AGENT</text>
+  </g>
+</svg>

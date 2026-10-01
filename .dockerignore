@@ -1,0 +1,8 @@
+node_modules
+bun.lockb
+dist
+build
+.cemicode/
+.env
+probe_dgx.py
+opencode-upstream/node_modules

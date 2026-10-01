@@ -1,0 +1,90 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "gdx-spark/Qwen3.6-35B-A3B",
+  "provider": {
+    "gdx-spark": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "GDX Spark Qwen3.6-35B (local DGX)",
+      "options": {
+        "baseURL": "http://192.168.4.4:8000/v1",
+        "apiKey": "no-hace-falta",
+        "headers": {
+          "X-CEMICODE-Project": "CEMICODE"
+        }
+      },
+      "models": {
+        "Qwen3.6-35B-A3B": {
+          "name": "Qwen3.6-35B-A3B (GDX Spark, 128K)",
+          "limit": {
+            "context": 131072,
+            "output": 32768
+          }
+        }
+      }
+    }
+  },
+  "agent": {
+    "orchestrator": {
+      "description": "Director CEMICODE: planifica y delega a coder/reasoning/reviewer. No edita directamente.",
+      "mode": "primary",
+      "model": "gdx-spark/Qwen3.6-35B-A3B",
+      "prompt": "{file:.opencode/agents/orchestrator.md}",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny"
+      },
+      "color": "#2563EB"
+    },
+    "coder-dgx": {
+      "description": "Especialista en codigo ejecutado en DGX GDX Spark. Implementa y edita.",
+      "mode": "subagent",
+      "model": "gdx-spark/Qwen3.6-35B-A3B",
+      "prompt": "{file:.opencode/agents/coder-dgx.md}",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "task": {
+          "*": "deny",
+          "reasoning-dgx": "allow",
+          "reviewer-zen": "allow"
+        }
+      },
+      "color": "#0EA5E9"
+    },
+    "reasoning-dgx": {
+      "description": "Arquitecto DGX: diseno, algoritmos complejos y debug dificil. Solo analiza.",
+      "mode": "subagent",
+      "model": "gdx-spark/Qwen3.6-35B-A3B",
+      "prompt": "{file:.opencode/agents/reasoning-dgx.md}",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny"
+      },
+      "color": "#7C3AED"
+    },
+    "reviewer-zen": {
+      "description": "Revisor QA: tests, auditoria y calidad pulida.",
+      "mode": "subagent",
+      "model": "gdx-spark/Qwen3.6-35B-A3B",
+      "prompt": "{file:.opencode/agents/reviewer-zen.md}",
+      "permission": {
+        "edit": "deny",
+        "bash": "allow"
+      },
+      "color": "#10B981"
+    }
+  },
+  "permission": {
+    "bash": {
+      "*": "ask",
+      "git status*": "allow",
+      "git diff*": "allow",
+      "git log*": "allow",
+      "python probe_dgx.py": "allow",
+      "python scripts/cemicode-auth.py*": "allow",
+      "python scripts/cemicode-chat.py*": "allow"
+    }
+  },
+  "share": "disabled",
+  "username": "cemicode"
+}

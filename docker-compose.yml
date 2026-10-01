@@ -1,0 +1,16 @@
+services:
+  cemicode:
+    build: .
+    container_name: cemicode
+    volumes:
+      - ./opencode-upstream:/app/opencode-upstream
+      - ./opencode.json:/app/opencode.json
+      - ./.opencode:/app/.opencode
+    ports:
+      - "3000:3000"
+    environment:
+      - DGX_LLM_BASE=http://192.168.4.4:8000/v1
+      - DGX_LLM_MODEL=Qwen3.6-35B-A3B
+      - DGX_AUTH_BASE=http://192.168.4.4:8100
+    extra_hosts:
+      - "dgx:192.168.4.4"
