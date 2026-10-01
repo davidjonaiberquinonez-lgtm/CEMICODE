@@ -15,6 +15,7 @@ _mod = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_mod)
 REPLACEMENTS, WEB_ASSETS = _mod.REPLACEMENTS, _mod.WEB_ASSETS
 REGEX_REPLACEMENTS = _mod.REGEX_REPLACEMENTS
+THEME_ASSETS = _mod.THEME_ASSETS
 
 fails, pending, applied = [], 0, 0
 for rel, old, new in REPLACEMENTS:
@@ -52,6 +53,19 @@ for src_rel, dst_rel in WEB_ASSETS:
     print(("OK  " if ok else "FAIL") + f" | asset origen [{src_rel}]")
     if not ok:
         fails.append(f"asset: {src_rel}")
+
+for src_rel, dst_rel in THEME_ASSETS:
+    ok = (ROOT / src_rel).exists()
+    print(("OK  " if ok else "FAIL") + f" | theme web [{src_rel}]")
+    if not ok:
+        fails.append(f"theme: {src_rel}")
+    else:
+        try:
+            import json as _json
+            _json.loads((ROOT / src_rel).read_text(encoding="utf-8"))
+            print(f"OK   | theme JSON valido [{src_rel}]")
+        except Exception as e:
+            fails.append(f"theme JSON roto: {e}")
 
 for rel in ["patches/cemicode-ui-branding.patch",
             ".github/workflows/build-cemicode.yml",

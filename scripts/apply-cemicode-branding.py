@@ -104,6 +104,23 @@ REPLACEMENTS = [
     ("packages/ui/src/theme/context.tsx",
      'opencode: "OpenCode",',
      'opencode: "CEMICODE", // CEMICODE rebrand'),
+    # 14. Registrar theme CEMICODE en el picker (packages/ui/src/theme/context.tsx)
+    ("packages/ui/src/theme/context.tsx",
+     '  "catppuccin-macchiato": "Catppuccin Macchiato",',
+     '  "catppuccin-macchiato": "Catppuccin Macchiato",\n'
+     '  cemicode: "CEMICODE", // CEMICODE rebrand'),
+    # 15. Theme CEMICODE por defecto (packages/ui/src/theme/context.tsx)
+    ("packages/ui/src/theme/context.tsx",
+     'const themeId = normalize(read(STORAGE_KEYS.THEME_ID) ?? props.defaultTheme) ?? "oc-2"',
+     'const themeId = normalize(read(STORAGE_KEYS.THEME_ID) ?? props.defaultTheme) ?? "cemicode" // CEMICODE rebrand: azul por defecto'),
+    ("packages/ui/src/theme/context.tsx",
+     'const savedTheme = normalize(rawTheme ?? props.defaultTheme) ?? "oc-2"',
+     'const savedTheme = normalize(rawTheme ?? props.defaultTheme) ?? "cemicode" // CEMICODE rebrand: azul por defecto'),
+]
+
+# (origen_repo, destino_upstream) para el theme web completo.
+THEME_ASSETS = [
+    ("cemicode-branding/theme-cemicode-web.json", "packages/ui/src/theme/themes/cemicode.json"),
 ]
 
 # (rel, patron_regex, reemplazo, marca_nueva, marca_vieja_para_check)
@@ -200,6 +217,19 @@ def apply(check_only=False):
             print(f"ASSET: {dst_rel}")
         else:
             errors.append(f"FALTA asset origen: {src_rel}")
+    for src_rel, dst_rel in THEME_ASSETS:
+        src, dst = ROOT / src_rel, UP / dst_rel
+        if check_only:
+            print(("OK theme: " if dst.exists() else "PENDIENTE theme: ") + dst_rel)
+        elif src.exists():
+            # valida JSON antes de copiar
+            import json as _json
+            _json.loads(src.read_text(encoding="utf-8"))
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            dst.write_bytes(src.read_bytes())
+            print(f"THEME: {dst_rel}")
+        else:
+            errors.append(f"FALTA theme origen: {src_rel}")
     if errors:
         print("\nERRORES:")
         for e in errors:

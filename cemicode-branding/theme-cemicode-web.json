@@ -1,0 +1,83 @@
+{
+  "$schema": "https://opencode.ai/desktop-theme.json",
+  "name": "CEMICODE",
+  "id": "cemicode",
+  "light": {
+    "palette": {
+      "neutral": "#F2F6FC",
+      "ink": "#0B1220",
+      "primary": "#2563EB",
+      "accent": "#0284C7",
+      "success": "#059669",
+      "warning": "#D97706",
+      "error": "#DC2626",
+      "info": "#0284C7",
+      "diffAdd": "#059669",
+      "diffDelete": "#DC2626"
+    },
+    "overrides": {
+      "text-strong": "#0B1220",
+      "text-base": "#1E2A45",
+      "text-weak": "#5B6B8C",
+      "text-weaker": "#8CA0BF",
+      "border-weak-base": "#D7E0F0",
+      "border-weaker-base": "#E6ECF7",
+      "icon-base": "#2563EB",
+      "icon-weak-base": "#8CA0BF",
+      "surface-raised-base": "#FFFFFF",
+      "surface-raised-base-hover": "#F2F6FC",
+      "surface-base": "#F2F6FC",
+      "surface-base-hover": "#0000000A",
+      "surface-interactive-weak": "#E8F0FE",
+      "icon-success-base": "#059669",
+      "surface-success-base": "#DFF7EC",
+      "surface-critical-base": "#FDECEC",
+      "syntax-comment": "#8CA0BF",
+      "syntax-keyword": "#1D4ED8",
+      "syntax-string": "#059669",
+      "syntax-primitive": "#2563EB",
+      "syntax-property": "#0284C7",
+      "syntax-type": "#7C3AED",
+      "syntax-constant": "#D97706"
+    }
+  },
+  "dark": {
+    "palette": {
+      "neutral": "#0B1220",
+      "ink": "#E6EDF7",
+      "primary": "#2563EB",
+      "accent": "#0EA5E9",
+      "success": "#10B981",
+      "warning": "#F59E0B",
+      "error": "#F87171",
+      "info": "#0EA5E9",
+      "diffAdd": "#10B981",
+      "diffDelete": "#F87171"
+    },
+    "overrides": {
+      "text-strong": "#F2F6FC",
+      "text-base": "#E6EDF7",
+      "text-weak": "#8CA0BF",
+      "text-weaker": "#5B6B8C",
+      "border-weak-base": "#1E2A45",
+      "border-weaker-base": "#16233F",
+      "icon-base": "#0EA5E9",
+      "icon-weak-base": "#8CA0BF",
+      "surface-raised-base": "#16233F",
+      "surface-raised-base-hover": "#1B2A4A",
+      "surface-base": "#111C33",
+      "surface-base-hover": "#FFFFFF0A",
+      "surface-interactive-weak": "#1B2A4A",
+      "icon-success-base": "#10B981",
+      "surface-success-base": "#0B2E25",
+      "surface-critical-base": "#3A1414",
+      "syntax-comment": "#8CA0BF",
+      "syntax-keyword": "#7DD3FC",
+      "syntax-string": "#6EE7B7",
+      "syntax-primitive": "#60A5FA",
+      "syntax-property": "#38BDF8",
+      "syntax-type": "#93C5FD",
+      "syntax-constant": "#F59E0B"
+    }
+  }
+}

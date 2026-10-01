@@ -19,6 +19,7 @@ sí aplica; el logo/título compilados no. Este documento cubre el cambio real.
 | Web watermark (`ui/.../wordmark-v2.tsx`) | Letras opencode → texto `CEMICODE` |
 | Web logo (`ui/.../logo.tsx`) | Paths opencode → texto `CEMICODE` |
 | Web tema (`ui/.../theme/context.tsx`) | Oscuro por defecto + theme built-in muestra `CEMICODE` |
+| Web theme azul (`cemicode-branding/theme-cemicode-web.json` → `ui/.../theme/themes/cemicode.json`) | Theme completo en paleta marca, registrado en picker y por defecto |
 | Canal (`OPENCODE_CHANNEL=prod` en CI) | Sin badge DEV, versión `0.0.0-prod-*` |
 
 Regla AGENTS.md respetada: `opencode-upstream/` no se edita a mano; solo via
