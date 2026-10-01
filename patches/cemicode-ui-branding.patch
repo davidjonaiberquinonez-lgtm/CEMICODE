@@ -59,7 +59,7 @@
 +++ b/packages/opencode/script/build.ts
 @@
 -      execArgv: [`--user-agent=opencode/${Script.version}`, "--use-system-ca", "--"],
-+      execArgv: [`--user-agent=cemicode/${Script.version}`, "--use-system-ca", "--"], // CEMICODE rebrand
++      execArgv: [`--user-agent=cemicode/${Script.version}`, "--use-system-ca", "--"],
 @@
    const name = [
 -    pkg.name,

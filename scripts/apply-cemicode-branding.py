@@ -54,9 +54,10 @@ REPLACEMENTS = [
      'describe: "start opencode server and open web interface",',
      'describe: "start cemicode server and open web interface", // CEMICODE rebrand'),
     # 5a. User-agent del binario compilado (packages/opencode/script/build.ts)
+    # NOTA: sin comentario inline — va dentro del array execArgv y lo romperia
     ("packages/opencode/script/build.ts",
      "`--user-agent=opencode/${Script.version}`",
-     "`--user-agent=cemicode/${Script.version}` // CEMICODE rebrand"),
+     "`--user-agent=cemicode/${Script.version}`"),
     # 5b. Nombre del binario compilado -> cemicode-*
     ("packages/opencode/script/build.ts",
      "  const name = [\n    pkg.name,",
