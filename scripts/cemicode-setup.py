@@ -27,10 +27,12 @@ def find_zip():
 def ps(cmd):
     subprocess.run(["powershell", "-NoProfile", "-Command", cmd], check=False)
 
-def make_shortcut(target, lnk, desc, workdir):
+def make_shortcut(target, lnk, desc, workdir, icon=None):
+    icon_part = f"$s.IconLocation = '{icon}'; " if icon else ""
     cmd = (f"$ws = New-Object -ComObject WScript.Shell; "
            f"$s = $ws.CreateShortcut('{lnk}'); $s.TargetPath = '{target}'; "
-           f"$s.WorkingDirectory = '{workdir}'; $s.Description = '{desc}'; $s.Save()")
+           f"$s.WorkingDirectory = '{workdir}'; $s.Description = '{desc}'; "
+           f"{icon_part}$s.Save()")
     ps(cmd)
 
 def main():
@@ -67,11 +69,13 @@ def main():
         start.mkdir(parents=True, exist_ok=True)
         bat = dest / "ejecutar-cemicode.bat"
         web = dest / "ejecutar-cemicode-web.bat"
+        ico = dest / "cemicode.ico"
+        icon = str(ico) if ico.exists() else None
         if bat.exists():
-            make_shortcut(str(bat), str(desktop / f"{APP}.lnk"), f"{APP} Portable", str(dest))
-            make_shortcut(str(bat), str(start / f"{APP}.lnk"), f"{APP} Portable", str(dest))
+            make_shortcut(str(bat), str(desktop / f"{APP}.lnk"), f"{APP} Portable", str(dest), icon)
+            make_shortcut(str(bat), str(start / f"{APP}.lnk"), f"{APP} Portable", str(dest), icon)
         if web.exists():
-            make_shortcut(str(web), str(start / f"{APP} Web.lnk"), f"{APP} Web", str(dest))
+            make_shortcut(str(web), str(start / f"{APP} Web.lnk"), f"{APP} Web", str(dest), icon)
         print(f"[{APP} Setup] Accesos directos creados.")
     if add_path:
         ps(f"[Environment]::SetEnvironmentVariable('Path', [Environment]::GetEnvironmentVariable('Path','User') + ';{dest / 'bin'}', 'User')")

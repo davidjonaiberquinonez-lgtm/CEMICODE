@@ -15,6 +15,9 @@ DefaultDirName={localappdata}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 OutputDir=..\dist
 OutputBaseFilename=CEMICODE-Setup-Inno
+SetupIconFile=..\cemicode-branding\icons\cemicode.ico
+UninstallDisplayIcon={app}\cemicode.ico
+WizardImageFile=..\cemicode-branding\icons\icon-192.png
 Compression=lzma2/max
 SolidCompression=yes
 WizardStyle=modern
@@ -23,11 +26,12 @@ DisableProgramGroupPage=yes
 
 [Files]
 Source: "..\dist-portable-cemicode\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\cemicode-branding\icons\cemicode.ico"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
-Name: "{group}\CEMICODE"; Filename: "{app}\ejecutar-cemicode.bat"; WorkingDir: "{app}"
-Name: "{group}\CEMICODE Web"; Filename: "{app}\ejecutar-cemicode-web.bat"; WorkingDir: "{app}"
-Name: "{autodesktop}\CEMICODE"; Filename: "{app}\ejecutar-cemicode.bat"; WorkingDir: "{app}"; Tasks: desktopicon
+Name: "{group}\CEMICODE"; Filename: "{app}\ejecutar-cemicode.bat"; WorkingDir: "{app}"; IconFilename: "{app}\cemicode.ico"
+Name: "{group}\CEMICODE Web"; Filename: "{app}\ejecutar-cemicode-web.bat"; WorkingDir: "{app}"; IconFilename: "{app}\cemicode.ico"
+Name: "{autodesktop}\CEMICODE"; Filename: "{app}\ejecutar-cemicode.bat"; WorkingDir: "{app}"; IconFilename: "{app}\cemicode.ico"; Tasks: desktopicon
 
 [Tasks]
 Name: "desktopicon"; Description: "Crear icono en el escritorio"; GroupDescription: "Accesos directos:"

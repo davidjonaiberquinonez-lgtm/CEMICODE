@@ -65,6 +65,7 @@ jobs:
             cp -r cemicode-branding "$P/"
             cp scripts/cemicode-auth.py scripts/cemicode-chat.py "$P/scripts/"
             cp packaging/ejecutar-cemicode.bat packaging/ejecutar-cemicode-web.bat packaging/LEEME-PORTABLE.txt "$P/"
+            cp cemicode-branding/icons/cemicode.ico "$P/"
             (cd "$P" && zip -r "../dist/CEMICODE-Portable-${TARGET}-rebranded.zip" .)
           done
           ./dist-portable-linux-x64/bin/cemicode --version

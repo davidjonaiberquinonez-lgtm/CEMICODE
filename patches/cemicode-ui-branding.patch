@@ -1,7 +1,6 @@
-﻿# Parche documentado CEMICODE UI branding v3 (MIT upstream intacta)
+﻿# Parche documentado CEMICODE UI branding v4 (MIT upstream intacta)
 # Generado y verificado: aplicar con python scripts/apply-cemicode-branding.py
 # Este archivo es solo referencia - la fuente de verdad es el script.
-# Incluye: theme web azul completo via cemicode-branding/theme-cemicode-web.json
 
 diff --git a/opencode-upstream/packages/tui/src/logo.ts b/packages/tui/src/logo.ts
 index a58a8cf..fbcf71c 100644
@@ -40,7 +39,7 @@ index 6ad6495..705fa8c 100644
  
 
 diff --git a/opencode-upstream/packages/app/index.html b/packages/app/index.html
-index d715351..d3a5e95 100644
+index d715351..d57a5f8 100644
 --- a/opencode-upstream/packages/app/index.html
 +++ b/packages/app/index.html
 @@ -1,18 +1,18 @@
@@ -54,15 +53,18 @@ index d715351..d3a5e95 100644
        content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover"
      />
 -    <title>OpenCode</title>
-+    <title>CEMICODE ÔÇö Coding Agent</title> <!-- CEMICODE rebrand -->
-+    <link rel="icon" type="image/svg+xml" href="/cemicode-logo.svg" />
-     <link rel="icon" type="image/png" href="/favicon-96x96-v3.png" sizes="96x96" />
+-    <link rel="icon" type="image/png" href="/favicon-96x96-v3.png" sizes="96x96" />
 -    <link rel="icon" type="image/svg+xml" href="/favicon-v3.svg" />
 -    <link rel="shortcut icon" href="/favicon-v3.ico" />
-+    <link rel="shortcut icon" href="/favicon-v3.ico" /> <!-- CEMICODE rebrand -->
-     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-v3.png" />
-     <link rel="manifest" href="/site.webmanifest" />
+-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-v3.png" />
+-    <link rel="manifest" href="/site.webmanifest" />
 -    <meta name="theme-color" content="#fafafa" />
++    <title>CEMICODE ÔÇö Coding Agent</title> <!-- CEMICODE rebrand -->
++    <link rel="icon" type="image/svg+xml" href="/cemicode-logo.svg" />
++    <link rel="icon" type="image/png" href="/cemicode-favicon-96.png" sizes="96x96" />
++    <link rel="shortcut icon" href="/cemicode.ico" />
++    <link rel="apple-touch-icon" sizes="180x180" href="/cemicode-apple-touch-icon.png" />
++    <link rel="manifest" href="/cemicode.webmanifest" /> <!-- CEMICODE rebrand -->
 +    <meta name="theme-color" content="#0B1220" /> <!-- CEMICODE rebrand -->
      <meta name="mobile-web-app-capable" content="yes" />
      <meta name="apple-mobile-web-app-capable" content="yes" />

@@ -14,7 +14,8 @@ sí aplica; el logo/título compilados no. Este documento cubre el cambio real.
 | CLI wordmark (`opencode/src/cli/ui.ts`) | No-TTY: `CEMICODE / CODING AGENT · GDX SPARK DGX` |
 | CLI web (`opencode/src/cli/cmd/web.ts`) | describe + etiqueta `CEMICODE interface:` |
 | Build (`opencode/script/build.ts`) | user-agent `cemicode/<ver>` (artefacto conserva nombre upstream; rename al empaquetar) |
-| Web (`app/index.html`) | Título, favicon, `theme-color` + fondo `#0B1220` |
+| Web (`app/index.html`) | Título, favicon SVG+PNG, `cemicode.ico`, apple-touch, manifest propio, `theme-color` + fondo `#0B1220` |
+| Web iconos (`cemicode-branding/icons/`) | Set PNG 16→512 + ICO multi-tamaño generados del SVG (Edge headless + Pillow); accesos `.lnk` e Inno usan `cemicode.ico` |
 | Web (`app/src/entry.tsx`) | Icono notificaciones → `/cemicode-logo.svg` |
 | Web watermark (`ui/.../wordmark-v2.tsx`) | Letras opencode → texto `CEMICODE` |
 | Web logo (`ui/.../logo.tsx`) | Paths opencode → texto `CEMICODE` |

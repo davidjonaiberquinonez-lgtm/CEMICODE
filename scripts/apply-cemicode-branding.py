@@ -37,14 +37,18 @@ REPLACEMENTS = [
     ("packages/app/index.html",
      "<title>OpenCode</title>",
      "<title>CEMICODE \u2014 Coding Agent</title> <!-- CEMICODE rebrand -->"),
-    # 3b. Web favicons -> assets CEMICODE (se copian en CI antes del build)
+    # 3b. Iconos web completos CEMICODE (se copian en CI antes del build)
     ("packages/app/index.html",
      '<link rel="icon" type="image/png" href="/favicon-96x96-v3.png" sizes="96x96" />\n'
      '    <link rel="icon" type="image/svg+xml" href="/favicon-v3.svg" />\n'
-     '    <link rel="shortcut icon" href="/favicon-v3.ico" />',
+     '    <link rel="shortcut icon" href="/favicon-v3.ico" />\n'
+     '    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-v3.png" />\n'
+     '    <link rel="manifest" href="/site.webmanifest" />',
      '<link rel="icon" type="image/svg+xml" href="/cemicode-logo.svg" />\n'
-     '    <link rel="icon" type="image/png" href="/favicon-96x96-v3.png" sizes="96x96" />\n'
-     '    <link rel="shortcut icon" href="/favicon-v3.ico" /> <!-- CEMICODE rebrand -->'),
+     '    <link rel="icon" type="image/png" href="/cemicode-favicon-96.png" sizes="96x96" />\n'
+     '    <link rel="shortcut icon" href="/cemicode.ico" />\n'
+     '    <link rel="apple-touch-icon" sizes="180x180" href="/cemicode-apple-touch-icon.png" />\n'
+     '    <link rel="manifest" href="/cemicode.webmanifest" /> <!-- CEMICODE rebrand -->'),
     # 3c. Web theme-color + fondo base -> azul oscuro marca
     ("packages/app/index.html",
      '<meta name="theme-color" content="#fafafa" />',
@@ -162,6 +166,15 @@ REGEX_REPLACEMENTS = [
 WEB_ASSETS = [
     ("cemicode-branding/logo-cemicode.svg", "packages/app/public/cemicode-logo.svg"),
     ("cemicode-branding/logo-cemicode-horizontal.svg", "packages/app/public/cemicode-logo-horizontal.svg"),
+    ("cemicode-branding/icons/favicon-16.png", "packages/app/public/cemicode-favicon-16.png"),
+    ("cemicode-branding/icons/favicon-32.png", "packages/app/public/cemicode-favicon-32.png"),
+    ("cemicode-branding/icons/favicon-48.png", "packages/app/public/cemicode-favicon-48.png"),
+    ("cemicode-branding/icons/favicon-96.png", "packages/app/public/cemicode-favicon-96.png"),
+    ("cemicode-branding/icons/apple-touch-icon.png", "packages/app/public/cemicode-apple-touch-icon.png"),
+    ("cemicode-branding/icons/icon-192.png", "packages/app/public/cemicode-icon-192.png"),
+    ("cemicode-branding/icons/icon-512.png", "packages/app/public/cemicode-icon-512.png"),
+    ("cemicode-branding/icons/cemicode.ico", "packages/app/public/cemicode.ico"),
+    ("cemicode-branding/cemicode.webmanifest", "packages/app/public/cemicode.webmanifest"),
 ]
 
 
