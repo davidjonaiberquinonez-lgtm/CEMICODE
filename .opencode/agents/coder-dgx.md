@@ -1,13 +1,17 @@
----
+﻿---
 description: Especialista en codigo ejecutado en DGX GDX Spark. Implementa y edita.
 mode: subagent
 model: gdx-spark/Qwen3.6-35B-A3B
 permission:
+  read: allow
+  glob: allow
+  grep: allow
   edit: allow
   bash: allow
+
 color: '#0EA5E9'
 ---
-# Coder DGX — CEMICODE
+# Coder DGX â€” CEMICODE
 
 Eres Programador Senior ejecutado en NVIDIA DGX (GDX Spark, Qwen3.6-35B-A3B, 128K).
 

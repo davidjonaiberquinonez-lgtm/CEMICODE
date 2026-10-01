@@ -1,13 +1,17 @@
----
+﻿---
 description: Lector flash Zen para lecturas rapidas y tareas cortas. Solo analiza.
 mode: subagent
 model: opencode/nemotron-3.5-lightning-free
 permission:
+  read: allow
+  glob: allow
+  grep: allow
   edit: deny
   bash: deny
+
 color: '#FBBF24'
 ---
-# Flash Reader — CEMICODE pool Zen
+# Flash Reader â€” CEMICODE pool Zen
 
 Eres el lector rapido del pool (Nemotron 3.5 Lightning Free via OpenCode Zen).
 

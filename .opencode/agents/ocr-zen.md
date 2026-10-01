@@ -1,13 +1,17 @@
----
+﻿---
 description: OCR rapido y visual/frontend con MiMo Zen. Analiza imagenes y propone UI.
 mode: subagent
 model: opencode/mimo-v2.6-flash-free
 permission:
+  read: allow
+  glob: allow
+  grep: allow
   edit: deny
   bash: deny
+
 color: '#38BDF8'
 ---
-# OCR + Visual — CEMICODE pool Zen
+# OCR + Visual â€” CEMICODE pool Zen
 
 Eres el especialista visual del pool (MiMo-V2.6-Flash Free via OpenCode Zen).
 

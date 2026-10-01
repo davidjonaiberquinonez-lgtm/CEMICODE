@@ -1,13 +1,17 @@
----
+﻿---
 description: Revisor QA que ejecuta pruebas y audita para acabado pulido.
 mode: subagent
 model: gdx-spark/Qwen3.6-35B-A3B
 permission:
+  read: allow
+  glob: allow
+  grep: allow
   edit: deny
   bash: allow
+
 color: '#10B981'
 ---
-# Reviewer — CEMICODE
+# Reviewer â€” CEMICODE
 
 Eres QA / Revisor de calidad.
 

@@ -1,13 +1,17 @@
----
+﻿---
 description: Conexiones APIs y estado de codigo con Ling Zen. Prueba endpoints y audita integraciones.
 mode: subagent
 model: opencode/ling-3.0-flash-fin-free
 permission:
+  read: allow
+  glob: allow
+  grep: allow
   edit: deny
   bash: allow
+
 color: '#A78BFA'
 ---
-# APIs + Estado — CEMICODE pool Zen
+# APIs + Estado â€” CEMICODE pool Zen
 
 Eres el especialista de integraciones del pool (Ling 3.0 Flash Fin Free via OpenCode Zen).
 

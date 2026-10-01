@@ -48,7 +48,10 @@
           "*": "deny",
           "reasoning-dgx": "allow",
           "reviewer-zen": "allow"
-        }
+        },
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow"
       },
       "color": "#0EA5E9"
     },
@@ -59,7 +62,10 @@
       "prompt": "{file:.opencode/agents/reasoning-dgx.md}",
       "permission": {
         "edit": "deny",
-        "bash": "deny"
+        "bash": "deny",
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow"
       },
       "color": "#7C3AED"
     },
@@ -70,7 +76,10 @@
       "prompt": "{file:.opencode/agents/reviewer-zen.md}",
       "permission": {
         "edit": "deny",
-        "bash": "allow"
+        "bash": "allow",
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow"
       },
       "color": "#FB7185"
     },
@@ -81,7 +90,10 @@
       "prompt": "{file:.opencode/agents/flash-zen.md}",
       "permission": {
         "edit": "deny",
-        "bash": "deny"
+        "bash": "deny",
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow"
       },
       "color": "#FBBF24"
     },
@@ -92,7 +104,10 @@
       "prompt": "{file:.opencode/agents/ocr-zen.md}",
       "permission": {
         "edit": "deny",
-        "bash": "deny"
+        "bash": "deny",
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow"
       },
       "color": "#38BDF8"
     },
@@ -103,7 +118,10 @@
       "prompt": "{file:.opencode/agents/apis-zen.md}",
       "permission": {
         "edit": "deny",
-        "bash": "allow"
+        "bash": "allow",
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow"
       },
       "color": "#A78BFA"
     },
@@ -114,7 +132,10 @@
       "prompt": "{file:.opencode/agents/coder-zen.md}",
       "permission": {
         "edit": "allow",
-        "bash": "allow"
+        "bash": "allow",
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow"
       },
       "color": "#34D399"
     }
