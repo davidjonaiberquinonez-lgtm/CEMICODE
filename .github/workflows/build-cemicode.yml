@@ -37,6 +37,8 @@ jobs:
 
       - name: Compilar binarios cemicode (matriz completa, con Web UI embebida)
         working-directory: opencode-upstream/packages/opencode
+        env:
+          OPENCODE_CHANNEL: prod
         run: bun run script/build.ts
 
       - name: Empaquetar portables rebrandeados (linux + windows)

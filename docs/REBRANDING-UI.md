@@ -4,16 +4,22 @@ Por qué el portable actual se ve igual que OpenCode: `bin/cemicode.exe` es el
 binario oficial renombrado. El branding de config (theme, agentes, provider)
 sí aplica; el logo/título compilados no. Este documento cubre el cambio real.
 
-## Qué cambia el parche (fuente: `patches/cemicode-ui-branding.patch`)
+## Qué cambia el parche (fuente: `scripts/apply-cemicode-branding.py`)
 
-| Archivo upstream | Cambio |
+| Zona | Cambio |
 |---|---|
-| `packages/tui/src/logo.ts` | Logo ASCII TUI → icono + `CEMICODE CODING / AGENT · GDX SPARK / DGX · PULIDO OK` |
-| `packages/opencode/src/cli/ui.ts` | Wordmark no-TTY → `CEMICODE / CODING AGENT · GDX SPARK DGX` |
-| `packages/app/index.html` | `<title>CEMICODE — Coding Agent</title>`, favicon → `/cemicode-logo.svg`, `theme-color` + fondo → `#0B1220` |
-| `packages/opencode/src/cli/cmd/web.ts` | describe → `start cemicode server and open web interface` |
-| `packages/opencode/script/build.ts` | user-agent → `cemicode/<versión>` (el artefacto conserva nombre upstream: el renombre a `cemicode` ocurre al empaquetar) |
-| `packages/app/public/` (CI) | Se copian `cemicode-logo.svg` + `cemicode-logo-horizontal.svg` (icono izq + texto der) para la Web UI embebida |
+| TUI logo (`tui/src/logo.ts`) | C en bloques + `CEMICODE CODING / AGENT · GDX SPARK / DGX · PULIDO OK` |
+| TUI títulos (`tui/src/app.tsx`) | Terminal: `CEMICODE` y `CEMICODE \| <sesión>` |
+| CLI (`opencode/src/index.ts`, `temporary.ts`) | `scriptName cemicode` en `--help` |
+| CLI wordmark (`opencode/src/cli/ui.ts`) | No-TTY: `CEMICODE / CODING AGENT · GDX SPARK DGX` |
+| CLI web (`opencode/src/cli/cmd/web.ts`) | describe + etiqueta `CEMICODE interface:` |
+| Build (`opencode/script/build.ts`) | user-agent `cemicode/<ver>` (artefacto conserva nombre upstream; rename al empaquetar) |
+| Web (`app/index.html`) | Título, favicon, `theme-color` + fondo `#0B1220` |
+| Web (`app/src/entry.tsx`) | Icono notificaciones → `/cemicode-logo.svg` |
+| Web watermark (`ui/.../wordmark-v2.tsx`) | Letras opencode → texto `CEMICODE` |
+| Web logo (`ui/.../logo.tsx`) | Paths opencode → texto `CEMICODE` |
+| Web tema (`ui/.../theme/context.tsx`) | Oscuro por defecto + theme built-in muestra `CEMICODE` |
+| Canal (`OPENCODE_CHANNEL=prod` en CI) | Sin badge DEV, versión `0.0.0-prod-*` |
 
 Regla AGENTS.md respetada: `opencode-upstream/` no se edita a mano; solo via
 `python scripts/apply-cemicode-branding.py` (idempotente, verificado con `--check`).

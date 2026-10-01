@@ -14,6 +14,7 @@ _spec = importlib.util.spec_from_file_location(
 _mod = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_mod)
 REPLACEMENTS, WEB_ASSETS = _mod.REPLACEMENTS, _mod.WEB_ASSETS
+REGEX_REPLACEMENTS = _mod.REGEX_REPLACEMENTS
 
 fails, pending, applied = [], 0, 0
 for rel, old, new in REPLACEMENTS:
@@ -30,6 +31,21 @@ for rel, old, new in REPLACEMENTS:
         print(f"PENDIENTE | {rel} (upstream intacto, CI lo aplica)")
     else:
         fails.append(f"{rel}: deriva upstream (ni original ni parche coinciden)")
+
+for rel, _pattern, _repl, new_mark, old_mark in REGEX_REPLACEMENTS:
+    p = ROOT / "opencode-upstream" / rel
+    if not p.exists():
+        fails.append(f"{rel}: falta archivo upstream")
+        continue
+    text = p.read_text(encoding="utf-8")
+    if new_mark in text:
+        applied += 1
+        print(f"APLICADO  | {rel} (regex)")
+    elif old_mark in text:
+        pending += 1
+        print(f"PENDIENTE | {rel} (regex, upstream intacto, CI lo aplica)")
+    else:
+        fails.append(f"{rel}: deriva upstream (regex sin coincidencia)")
 
 for src_rel, dst_rel in WEB_ASSETS:
     ok = (ROOT / src_rel).exists()
