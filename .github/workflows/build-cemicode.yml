@@ -62,7 +62,7 @@ jobs:
             cp .opencode/tui.json "$P/.opencode/"
             cp -r cemicode-branding "$P/"
             cp scripts/cemicode-auth.py scripts/cemicode-chat.py "$P/scripts/"
-            cp ejecutar-cemicode.bat ejecutar-cemicode-web.bat "$P/" 2>/dev/null || true
+            cp packaging/ejecutar-cemicode.bat packaging/ejecutar-cemicode-web.bat packaging/LEEME-PORTABLE.txt "$P/"
             (cd "$P" && zip -r "../dist/CEMICODE-Portable-${TARGET}-rebranded.zip" .)
           done
           ./dist-portable-linux-x64/bin/cemicode --version

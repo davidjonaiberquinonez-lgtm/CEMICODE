@@ -1,0 +1,15 @@
+CEMICODE Portable rebrandeado — como comprobar que es el bueno
+==============================================================
+1. Ejecuta ESTE .bat (ejecutar-cemicode.bat). Llama a bin\cemicode.exe
+   compilado en CI con el parche CEMICODE. NO uses el opencode instalado
+   en tu PC (opencode.cmd global) ni bats viejos: esos muestran el
+   original sin cambios.
+2. Huella rapida:  bin\cemicode.exe --help
+   Debe decir:  start cemicode server and open web interface
+   (el original dice "start opencode server...").
+3. TUI: el logo ASCII dice CEMICODE CODING / AGENT - GDX SPARK.
+   Consola no-TTY: imprime CEMICODE / CODING AGENT.
+4. Web (ejecutar-cemicode-web.bat): la pestana del navegador dice
+   "CEMICODE - Coding Agent". El contenido es el mismo por diseno.
+5. Primer uso: copia .env.example a .env, pon tu DGX_CLAVE,
+   luego bin\cemicode-auth.exe login (o el .py en scripts/).
