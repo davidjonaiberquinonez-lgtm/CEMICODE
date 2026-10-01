@@ -27,11 +27,18 @@ python scripts/cemicode-auth.py status
 C:/Users/CALOJULIO/AppData/Roaming/npm/bun.cmd --version
 ```
 
-## Flujo enjambre
-1. Usuario → `orchestrator` (primary, no edita): plan + subtareas con criterios.
-2. Diseno/debug → `@reasoning-dgx` (subagent, solo analisis).
-3. Codigo → `@coder-dgx` (subagent, edita).
-4. QA → `@reviewer-zen` (subagent, tests, dice PULIDO OK o reporta archivo:linea).
+## Flujo enjambre (pool GDX + Zen, misma sesion)
+GDX dirige y audita; Zen ejecuta.
+1. Usuario → `orchestrator` (primary GDX Qwen, no edita): plan + subtareas con criterios.
+2. Lectura rapida → `@flash-zen` (Zen Nemotron 3.5 Lightning Free).
+3. OCR / visual / frontend → `@ocr-zen` (Zen MiMo-V2.6-Flash Free).
+4. APIs / conexiones / estado → `@apis-zen` (Zen Ling 3.0 Flash Fin Free).
+5. Diseno/debug → `@reasoning-dgx` (GDX, solo analisis).
+6. Codigo → `@coder-zen` (Zen Muse Spark 1.3 Contributor Free; respaldo `@coder-dgx` GDX).
+7. QA → `@reviewer-zen` (GDX, dice PULIDO OK o reporta archivo:linea).
+
+Requiere key Zen: `/connect` en el TUI o `OPENCODE_ZEN_API_KEY` en `.env` local.
+Modelos verificados en catálogo Zen en vivo; repuesto free: `opencode/longcat-2.5-preview-free`.
 
 ## Branding CEMICODE
 - Layout oficial: icono a la izquierda + logotipo a la derecha `CEMIC{}DE / CODING AGENT`

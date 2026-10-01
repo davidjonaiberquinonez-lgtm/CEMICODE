@@ -25,7 +25,7 @@
   },
   "agent": {
     "orchestrator": {
-      "description": "Director CEMICODE: planifica y delega a coder/reasoning/reviewer. No edita directamente.",
+      "description": "Director CEMICODE: planifica y delega al pool GDX+Zen en la misma sesion. No edita directamente.",
       "mode": "primary",
       "model": "gdx-spark/Qwen3.6-35B-A3B",
       "prompt": "{file:.opencode/agents/orchestrator.md}",
@@ -71,7 +71,51 @@
         "edit": "deny",
         "bash": "allow"
       },
-      "color": "#10B981"
+      "color": "#FB7185"
+    },
+    "flash-zen": {
+      "description": "Lector flash Zen: lecturas rapidas y tareas cortas. Solo analiza.",
+      "mode": "subagent",
+      "model": "opencode/nemotron-3.5-lightning-free",
+      "prompt": "{file:.opencode/agents/flash-zen.md}",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny"
+      },
+      "color": "#FBBF24"
+    },
+    "ocr-zen": {
+      "description": "OCR y visual Zen: imagenes, UI y frontend. Solo analiza.",
+      "mode": "subagent",
+      "model": "opencode/mimo-v2.6-flash-free",
+      "prompt": "{file:.opencode/agents/ocr-zen.md}",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny"
+      },
+      "color": "#38BDF8"
+    },
+    "apis-zen": {
+      "description": "APIs y estado Zen: conexiones, endpoints y auditoria. Prueba sin editar.",
+      "mode": "subagent",
+      "model": "opencode/ling-3.0-flash-fin-free",
+      "prompt": "{file:.opencode/agents/apis-zen.md}",
+      "permission": {
+        "edit": "deny",
+        "bash": "allow"
+      },
+      "color": "#A78BFA"
+    },
+    "coder-zen": {
+      "description": "Programador Zen con Muse Spark: implementa y edita.",
+      "mode": "subagent",
+      "model": "opencode/muse-spark-1.3-contributor-free",
+      "prompt": "{file:.opencode/agents/coder-zen.md}",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow"
+      },
+      "color": "#34D399"
     }
   },
   "permission": {
